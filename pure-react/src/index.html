@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="root">React no Rendered</div>
+
+<script type="text/javascript" src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+
+<script type="text/javascript" src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+
+<script >
+	const Person=(props)=>{
+		return React.createElement("div",{},[
+			React.createElement("h1",{},props.name),
+			React.createElement("p",{},props.job),
+			])
+	}
+
+class App extends React.Component{
+	render(){
+		return React.createElement("div",{},
+			[
+			React.createElement("h1",{},"React is Rendered!!!"),
+			React.createElement(Person,{name :"pasindu",job:'developer'}),
+			React.createElement(Person,{name :"bob",job:'teacher'}),
+			React.createElement(Person,{name :"smith",job:'designer'}),
+			]
+			)
+
+		}
+	}
+
+	ReactDOM.render(React.createElement(App),document.getElementById("root"))
+</script>
+
+</body>
+</html>
