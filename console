@@ -1,0 +1,8 @@
+const colurs =['red','green']
+undefined
+colurs.push['blue']
+undefined
+colurs.push('blue')
+3
+colurs
+(3) ["red", "green", "blue"]
