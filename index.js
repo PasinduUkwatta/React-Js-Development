@@ -14,5 +14,5 @@ ReactDOM.render(
         <App />
 
     </Provider>,
-    document.queryCommandEnabled("#root")|| document.createElement('div')
+    document.querySelector("#root")
 )
