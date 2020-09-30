@@ -1,18 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Provider} from 'react-redux'
-import { createStore,applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+import faker from 'faker'
+import CommentDetail from "./CommentDetail";
 
-import App from './components/App'
-import reducers from './reducers'
+const App =()=>{
+    return(
+        <div className ='ui container comments'>
+            <CommentDetail
+                author ="sam"
+            />
 
-const store =createStore(reducers,applyMiddleware(thunk))
+            <CommentDetail
+                author ="alex"
+            />
 
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
+            <CommentDetail
+                author ="jane"
+            />
+        </div>
+    )
+}
 
-    </Provider>,
-    document.querySelector("#root")
-)
+ReactDOM.render(<App />,document.querySelector("#root"))
