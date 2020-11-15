@@ -1,32 +1,31 @@
-import React from "react";
-import SearchBar from "./SearchBar";
-import unsplash from "../api/unsplash";
-import ImageList from "./ImageList";
+import React from 'react'
+import {BrowserRouter,Route} from 'react-router-dom'
+import StreamCreate from "./streams/StreamCreate";
+import StreamDelete from "./streams/StreamDelete";
+import StreamEdit from "./streams/StreamEdit";
+import StreamList from "./streams/StreamList";
+import StreamShow from "./streams/StreamShow";
+import Header from "./Header";
 
-class App extends React.Component{
-    state ={
-        images :[]
-    }
+const App =()=>{
+    return (
+        <div className='ui container'>
 
-  onSearchSubmit= async (term)=>{
-      const responce = await unsplash.get('/search/photos',{
-            params :{query:term},
+            <BrowserRouter>
+                <div>
+                    <h1><Header/></h1>
+                    <Route exact path='/' component={StreamList}/>
+                    <Route exact path='/streams/new' component={StreamCreate}/>
+                    <Route exact path='/streams/edit' component={StreamEdit}/>
+                    <Route exact path='/streams/delete' component={StreamDelete}/>
+                    <Route exact path='/streams/show' component={StreamShow}/>
 
-        })
+                </div>
 
-       this.setState({images:responce.data.results})
-    }
+            </BrowserRouter>
 
-    render() {
-        return (
-            <div className="ui container" style={{marginTop:"15px"}}>
-                <SearchBar onSubmit={this.onSearchSubmit}/>
-                <ImageList images={this.state.images}/>
-            </div>
-        )
-    }
-
-
+        </div>
+    )
 }
 
 export default App
