@@ -1,0 +1,55 @@
+window.state = {
+    labels: ['PayPal', 'Credit Card'],
+    datasets: [
+        {
+            label: 'Percentages',
+            backgroundColor: 'rgba(75,192,192,1)',
+            borderColor: 'rgba(0,0,0,1)',
+            borderWidth: 1.5,
+             data:[0,100],
+            ticks: {
+                beginAtZero:true,
+
+
+
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+
+
+
+        }
+    ]
+    // window.location.replace("/graph");
+
+}
+
+
+   render() {
+        return (
+            <div>
+                <Bar
+                    data={window.state}
+                    options={{
+                        title:{
+                            display:true,
+                            text:'Payment Type Percentages',
+                            fontSize:20
+                        },
+                        legend:{
+                            display:true,
+                            position:'right'
+                        }
+                    }}
+                />
+            </div>
+        );
+    }
+}
+
+export default Graph
