@@ -1,0 +1,55 @@
+for(let i=0;i<=yearlyPayments.length-1;i++){
+                            console.log(yearlyPayments[i])
+                            console.log(yearlyPayments[i][0])
+                            if(yearlyPayments[i][0]===1){
+                                window.state.datasets[0].data[0]=yearlyPayments[i][1]
+
+                            }
+                            if(yearlyPayments[i][0]===2){
+                                window.state.datasets[0].data[1]=yearlyPayments[i][1]
+
+                            }
+                            if(yearlyPayments[i][0]===3){
+                                window.state.datasets[0].data[2]=yearlyPayments[i][1]
+
+                            }
+
+                            if(yearlyPayments[i][0]===4){
+                                window.state.datasets[0].data[3]=yearlyPayments[i][1]
+
+                            }
+
+                            if(yearlyPayments[i][0]===5){
+                                window.state.datasets[0].data[4]=yearlyPayments[i][1]
+
+                            }
+
+                            if(yearlyPayments[i][0]===6){
+                                window.state.datasets[0].data[5]=yearlyPayments[i][1]
+
+                            }
+
+                            if(yearlyPayments[i][0]===7){
+                                window.state.datasets[0].data[6]=yearlyPayments[i][1]
+
+                            }
+                            if(yearlyPayments[i][0]===8){
+                                window.state.datasets[0].data[7]=yearlyPayments[i][1]
+
+                            }
+                            if(yearlyPayments[i][0]===9){
+                                window.state.datasets[0].data[8]=yearlyPayments[i][1]
+
+                            }
+                            if(yearlyPayments[i][0]===10){
+                                window.state.datasets[0].data[9]=yearlyPayments[i][1]
+
+                            }
+                            if(yearlyPayments[i][0]===11){
+                                window.state.datasets[0].data[10]=yearlyPayments[i][1]
+
+                            }
+                            if(yearlyPayments[i][0]===12){
+                                window.state.datasets[0].data[11]=yearlyPayments[i][1]
+
+                            }
