@@ -1,6 +1,14 @@
-import React from "react";
-import ReactDOM from 'react-dom'
-import App from "./components/App";
+import {SIGN_IN,SIGN_OUT} from "./types";
 
+export const signIn =(userId) =>{
+    return{
+        type:SIGN_IN,
+        payload :userId
+    }
+}
 
-ReactDOM.render(<App/>,document.querySelector("#root"))
+export const signOut =() =>{
+    return{
+        type:SIGN_OUT
+    }
+}
