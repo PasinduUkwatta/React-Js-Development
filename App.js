@@ -1,21 +1,26 @@
 import React from "react";
-import SearchBar from "./SearchBar";
+import UserCreate from "./UserCreate";
 
 class App extends React.Component{
 
-    onSearchSubmit(term){
-        console.log(term)
+    state ={language :"english"}
+
+    onLanguageChange=language=>{
+        this.setState({language})
     }
 
     render() {
-        return (
-            <div className="ui container" style={{marginTop:"15px"}}>
-                <SearchBar onSubmit={this.onSearchSubmit}/>
+        return(
+            <div className="ui container">
+                <div>
+                    Select a Language:
+                    <i className="flag us" onClick={()=>this.onLanguageChange("english")}/>
+                    <i className="flag nl" onClick={()=>this.onLanguageChange("dutch")}/>
+                </div>
+                <UserCreate/>
             </div>
         )
     }
-
-
 }
 
 export default App
