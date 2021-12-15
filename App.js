@@ -1,26 +1,14 @@
-import React from "react";
-import UserCreate from "./UserCreate";
+import React from 'react';
+import BackwardCounter from './components/BackwardCounter';
+import ForwardCounter from './components/ForwardCounter';
 
-class App extends React.Component{
-
-    state ={language :"english"}
-
-    onLanguageChange=language=>{
-        this.setState({language})
-    }
-
-    render() {
-        return(
-            <div className="ui container">
-                <div>
-                    Select a Language:
-                    <i className="flag us" onClick={()=>this.onLanguageChange("english")}/>
-                    <i className="flag nl" onClick={()=>this.onLanguageChange("dutch")}/>
-                </div>
-                <UserCreate/>
-            </div>
-        )
-    }
+function App() {
+  return (
+    <React.Fragment>
+      <ForwardCounter />
+      <BackwardCounter />
+    </React.Fragment>
+  );
 }
 
-export default App
+export default App;
