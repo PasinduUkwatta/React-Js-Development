@@ -1,13 +1,15 @@
-import React from 'react';
-import BackwardCounter from './components/BackwardCounter';
-import ForwardCounter from './components/ForwardCounter';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <React.Fragment>
-      <ForwardCounter />
-      <BackwardCounter />
-    </React.Fragment>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+          <p>Happy New Year 2022 !</p>
+          <p>All the best for the New Year !</p>
+      </header>
+    </div>
   );
 }
 
