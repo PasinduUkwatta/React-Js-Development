@@ -1,23 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Provider,connect} from "react-redux";
-import {createStore,applyMiddleware,combineReducers} from "redux";
-import './index.css';
-import App from './containers/App';
-import registerServiceWorker from './registerServiceWorker';
-import 'tachyons';
-import {searchRobots,requestRobots} from "./containers/reducers";
-import {createLogger} from "redux-logger/src";
-import thunk from "redux-thunk";
-import thunkMiddleware from "redux-thunk";
+import React from "react";
+import {createStore} from "redux";
 
-const logger =createLogger()
-const rootReducer =combineReducers({searchRobots,requestRobots})
-const store =createStore(rootReducer,applyMiddleware(thunkMiddleware))
+const counterReducer =(state={counter :0},action) =>{
+    if(action.type ==="increment"){
+        return{
+            counter :state.counter+1
+        }
+    }
 
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>
-    , document.getElementById('root'));
-registerServiceWorker();
+    if(action.type ==="decrement"){
+        return{
+            counter :state.counter-1
+        }
+    }
+
+    return state
+
+}
+
+const store =createStore(counterReducer)
+
+export default store
