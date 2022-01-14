@@ -1,23 +1,24 @@
-import React, {Component} from "react";
-import CounterButton from "./CounterButton";
+import classes from './Header.module.css';
 
-class Header extends Component{
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return false
-    // }
+const Header = () => {
+  return (
+    <header className={classes.header}>
+      <h1>Redux Auth</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href='/'>My Products</a>
+          </li>
+          <li>
+            <a href='/'>My Sales</a>
+          </li>
+          <li>
+            <button>Logout</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
-    render() {
-        console.log("Header")
-
-        return(
-            <div>
-                <h1 className='f1'>RoboFriends</h1>
-                <CounterButton color ={"red"}/>
-
-
-            </div>
-        )
-    }
-}
-
-export default Header
+export default Header;
