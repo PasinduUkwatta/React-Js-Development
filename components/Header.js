@@ -1,22 +1,28 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import GoogleAuth from "./GoogleAuth";
+import classes from './Header.module.css';
+import {useSelector} from "react-redux";
 
-const Header = ()=>{
-    return (
-        <div className ='ui secondary pointing menu'>
-            <Link to='/' className ='item'>
-                Streamer
-            </Link>
-            <div className ='right menu'>
-                <Link to='/' className ='item'>
-                    All Streams
-                </Link>
-                <GoogleAuth />
+const Header = () => {
 
-            </div>
+  const isAuth =useSelector(state =>state.auth.isAuthenticated)
+  return (
+    <header className={classes.header}>
+      <h1>Redux Auth</h1>
+      {isAuth&&   <nav>
+        <ul>
+          <li>
+            <a href='/'>My Products</a>
+          </li>
+          <li>
+            <a href='/'>My Sales</a>
+          </li>
+          <li>
+            <button>Logout</button>
+          </li>
+        </ul>
+      </nav> }
 
-        </div>)
-}
+    </header>
+  );
+};
 
-export default Header
+export default Header;
