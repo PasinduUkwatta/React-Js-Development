@@ -1,23 +1,12 @@
-import React from "react";
-import {createStore} from "redux";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import "./index.css";
+import App from "./App";
 
-const counterReducer =(state={counter :0},action) =>{
-    if(action.type ==="increment"){
-        return{
-            counter :state.counter+1
-        }
-    }
-
-    if(action.type ==="decrement"){
-        return{
-            counter :state.counter-1
-        }
-    }
-
-    return state
-
-}
-
-const store =createStore(counterReducer)
-
-export default store
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
