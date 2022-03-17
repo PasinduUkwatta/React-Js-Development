@@ -1,9 +1,16 @@
-const AllQuotes =()=>{
-    return(
-        <div>
-            <h1>All Quote</h1>
-        </div>
-    )
-}
+import QuoteList from "../components/quotes/QuoteList";
 
-export default AllQuotes
+const DUMMY_QUOTES = [
+  { id: "q1", author: "Max", text: "Learning React is Fun" },
+  { id: "q2", author: "John", text: "Learning ML is Fun" },
+];
+
+const AllQuotes = () => {
+  return (
+    <div>
+      <QuoteList quotes={DUMMY_QUOTES} />
+    </div>
+  );
+};
+
+export default AllQuotes;
