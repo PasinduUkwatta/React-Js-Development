@@ -1,44 +1,60 @@
-import { useState } from "react";
+import { useReducer, useCallback } from "react";
 
-const useHttp = (requestConfig, applyData) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+function httpReducer(state, action) {
+  if (action.type === "SEND") {
+    return {
+      data: null,
+      error: null,
+      status: "pending",
+    };
+  }
 
-  const sendRequest = async (taskText) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(requestConfig.url, {
-        method: requestConfig.method,
-        headers: requestConfig.headers,
-        body: JSON.stringify(requestConfig.body),
-      });
+  if (action.type === "SUCCESS") {
+    return {
+      data: action.responseData,
+      error: null,
+      status: "completed",
+    };
+  }
 
-      if (!response.ok) {
-        throw new Error("Request failed!");
+  if (action.type === "ERROR") {
+    return {
+      data: null,
+      error: action.errorMessage,
+      status: "completed",
+    };
+  }
+
+  return state;
+}
+
+function useHttp(requestFunction, startWithPending = false) {
+  const [httpState, dispatch] = useReducer(httpReducer, {
+    status: startWithPending ? "pending" : null,
+    data: null,
+    error: null,
+  });
+
+  const sendRequest = useCallback(
+    async function (requestData) {
+      dispatch({ type: "SEND" });
+      try {
+        const responseData = await requestFunction(requestData);
+        dispatch({ type: "SUCCESS", responseData });
+      } catch (error) {
+        dispatch({
+          type: "ERROR",
+          errorMessage: error.message || "Something went wrong!",
+        });
       }
-
-      const data = await response.json();
-      applyData(data);
-
-      const loadedTasks = [];
-
-      for (const taskKey in data) {
-        loadedTasks.push({ id: taskKey, text: data[taskKey].text });
-      }
-
-      setTasks(loadedTasks);
-    } catch (err) {
-      setError(err.message || "Something went wrong!");
-    }
-    setIsLoading(false);
-  };
+    },
+    [requestFunction]
+  );
 
   return {
-    isLoading,
-    error,
     sendRequest,
+    ...httpState,
   };
-};
+}
 
 export default useHttp;
