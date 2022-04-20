@@ -1,12 +1,9 @@
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import store from "./store";
-import "./index.css";
-import App from "./App";
+function HomePage() {
+  return (
+    <div>
+      <h1>Home Page</h1>
+    </div>
+  );
+}
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
+export default HomePage;
