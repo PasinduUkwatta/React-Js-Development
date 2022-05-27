@@ -1,26 +1,23 @@
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
 
-const Products = () => {
+import ProductItem from '../components/Products/ProductItem';
+import { ProductsContext } from '../context/products-context';
+import './Products.css';
+
+const Products = props => {
+  const productList = useContext(ProductsContext).products;
   return (
-    <div>
-      <section>
-        {" "}
-        <h1>The Products Page</h1>
-        <ul>
-          <li>
-            <Link to="/products/p1">Book</Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/products/p2">Carpet</Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/products/p3">Online Course</Link>
-          </li>
-        </ul>
-      </section>
-    </div>
+      <ul className="products-list">
+        {productList.map(prod => (
+            <ProductItem
+                key={prod.id}
+                id={prod.id}
+                title={prod.title}
+                description={prod.description}
+                isFav={prod.isFavorite}
+            />
+        ))}
+      </ul>
   );
 };
 
